@@ -25,6 +25,16 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  //save new task
+
+  void saveNewTask() {
+    setState(() {
+      ToDoList.add([_controller.text, false]);
+      Navigator.of(context).pop();
+      _controller.clear();
+    });
+  }
+
   //Method to add task
   void addTask() {
     showDialog(
@@ -32,11 +42,14 @@ class _HomePageState extends State<HomePage> {
       builder: (context) {
         return AlertDialogComponent(
           controller: _controller,
-          onSave: () {},
+          onSave: saveNewTask,
         );
       },
     );
   }
+
+  //Method to delete task
+  void deleteTask(BuildContext) {}
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +75,7 @@ class _HomePageState extends State<HomePage> {
               checkBoxStatus: ToDoList[index][1],
               onChanged: (value) => checkBoxChanged(value, index),
               taskTitle: ToDoList[index][0],
+              onDelete: deleteTask,
             );
           },
         ),
