@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_hive/components/alertDialog.dart';
 import 'package:todo_hive/components/todoTile.dart';
 
 class HomePage extends StatefulWidget {
@@ -7,6 +8,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //Textedition controller
+
+  final _controller = TextEditingController();
+
   // List of todolist;
   List ToDoList = [
     ['Make an app', false],
@@ -25,7 +30,10 @@ class _HomePageState extends State<HomePage> {
     showDialog(
       context: context,
       builder: (context) {
-        return Container();
+        return AlertDialogComponent(
+          controller: _controller,
+          onSave: () {},
+        );
       },
     );
   }
@@ -59,7 +67,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: addTask,
         backgroundColor: Colors.deepPurple.shade900,
         child: Icon(Icons.add),
       ),
