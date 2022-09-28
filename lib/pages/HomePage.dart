@@ -14,6 +14,10 @@ class _HomePageState extends State<HomePage> {
 
   final _mybox = Hive.box('mybox');
 
+  //reference database class
+
+  ToDoDatabase db = ToDoDatabase();
+
   @override
   void initState() {
     if (_mybox.get("TODOLIST") == null) {
@@ -22,16 +26,14 @@ class _HomePageState extends State<HomePage> {
       db.loadTask();
     }
 
+    print(_mybox.get("TODOLIST"));
+
     super.initState();
   }
 
   //Textedition controller
 
   final _controller = TextEditingController();
-
-  //reference database class
-
-  ToDoDatabase db = ToDoDatabase();
 
   //Method for checkbox status changed
   void checkBoxChanged(bool? value, index) {

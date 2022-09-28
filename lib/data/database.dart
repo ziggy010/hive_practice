@@ -18,7 +18,7 @@ class ToDoDatabase {
 
   //load task
   void loadTask() {
-    _mybox.get("TODOLIST");
+    ToDoList = _mybox.get("TODOLIST");
   }
 
   //update database
