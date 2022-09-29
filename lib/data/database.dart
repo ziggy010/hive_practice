@@ -7,7 +7,6 @@ class ToDoDatabase {
 
   // List of todolist;
   List ToDoList = [];
-  List commitList = [];
 
   //if the app is opened for the first time.
   void createInitialization() {
